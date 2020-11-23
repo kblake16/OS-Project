@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="utf-8">
+		<title>World Database Lookup</title>
+
+		<!-- you can modify this as needed or to your preference -->
+		<link href=".css" type="text/css" rel="stylesheet" />
+
+		<!-- you write this -->
+		<script src=".js" type="text/javascript"></script>
+	</head>
+
+	<body>
+		<header class="heading1">
+            <h1>Virtual Memory</h1>
+        </header>
+        
+        <div class ="heading2">
+            <h1> Translation Lookaside Buffer</h1>
+            <div>
+                <h3>Virtual Page#</h3>
+                <li>
+                    <ol>
+
+                    </ol>
+                </li>
+            </div>
+            <div>
+                <h3>Physical Page#</h3>
+                <li>
+                    <ol>
+
+                    </ol>
+                </li>
+            </div>
+        </div>
+
+		<main>
+			<div id="controls">
+				<label>Physical size:</label>
+                <input id="pps" type="input" name="physical page size" placeholder="Enter page size" />
+                <br>
+                <label>Offset bits:</label>
+                <input id="ofb" type="input" name="offset bits" placeholder="Enter offset bits" />
+                <br>
+                <label>Virtual Memory:</label>
+                <input id="vms" type="input" name="virtual memory size" placeholder="Enter VM size" />
+                <br>
+                <label>TLB:</label>
+                <input id="tlb" type="input" name="tlb entries" placeholder="Enter TLB entries" />
+                <br>
+                <br>
+                <button id="reset">Reset</button>
+                <button id="submit">Submit</button>
+			</div>
+			
+			<div id="result">
+				<!-- Tables will appear here -->
+			</div>
+		</main>
+
+	</body>
+</html>
