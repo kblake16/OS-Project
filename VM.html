@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>World Database Lookup</title>
+    <title>Virtual Memory</title>
 
     <!-- you can modify this as needed or to your preference -->
     <link href="styles.css" type="text/css" rel="stylesheet" />
@@ -58,24 +58,22 @@
 
         </div>
 
-        <div class="heading2">
-            <h1> Translation Lookaside Buffer</h1>
-            <div>
-                <h3>Virtual Page#</h3>
-                <li>
-                    <ol>
+        <div id="controls">
+            <label>Logical Memory:</label>
+            <input id="lm" type="input" name="logical memory" placeholder="Enter # of pages in logical memory" />
+            <button id="reset" type="submit">Submit</button>
+            <br>
+            <hr>
+            <label>Physical Memory:</label>
+            <input id="pm" type="input" name="physical memory" placeholder="Enter # of pages physical memory" />
+            <button id="reset" type="submit">Submit</button>
+            <br>
+            <hr>
+            <label>Page Reference String:</label>
+            <input id="str" type="input" name="page string" placeholder="Enter page reference string" />
+            <button id="reset">Submit</button>
+            <br>
 
-                    </ol>
-                </li>
-            </div>
-            <div>
-                <h3>Physical Page#</h3>
-                <li>
-                    <ol>
-
-                    </ol>
-                </li>
-            </div>
         </div>
 
 
