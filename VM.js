@@ -1,7 +1,6 @@
 "use strict";
 
-window.onload = function()
-{
+window.onload = function() {
     /*
     offset = 2 bits
     vm size = 2048
@@ -29,12 +28,15 @@ window.onload = function()
     var Pagingtable = document.getElementById("Pagetable");
     var PhysicalMemorytable = document.getElementById("PhysicalMemoryTable");
 
-    submit.onclick = function createTable(){
+    submit.onclick = function createTable() {
         console.log("clicked");
 
-        console.log
 
-        var div = 2**parseInt(Offset.value);
+        var number = "11a";
+        var hexa = parseInt(number, 16).toString(2);
+        console.log(hexa)
+
+        var div = 2 ** parseInt(Offset.value);
         var tlbVal = parseInt(TLB.value);
         var offsetVal = parseInt(Offset.value);
         var vmVal = parseInt(VM.value);
@@ -42,8 +44,7 @@ window.onload = function()
 
         //TLB table
         var rowNum = 1;
-        for (var i = tlbVal -1; i>=0;i--)
-        {
+        for (var i = tlbVal - 1; i >= 0; i--) {
             var row = TLBtable.insertRow(rowNum);
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
@@ -63,19 +64,18 @@ window.onload = function()
         //submit.onclick = null;
     }
 
-    reset.onclick = function clearTable(){
+    reset.onclick = function clearTable() {
         console.log("clicked");
 
         var rowCount = TLBtable.rows.length - 1;
         console.log(rowCount);
-        for( var i = rowCount; i > 0; i--)
-        {
+        for (var i = rowCount; i > 0; i--) {
             TLBtable.deleteRow(i);
         }
 
         VMtable.deleteRow(1);
 
-       //submit.onclick = function createTable();
+        //submit.onclick = function createTable();
     }
 }
 

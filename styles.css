@@ -3,6 +3,25 @@ body {
     font-size: 16px;
 }
 
+#head {
+    grid-area: head;
+}
+
+#nav {
+    grid-area: nav;
+}
+
+#main {
+    grid-area: main;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-areas: 'head head head head head head' 'nav main main main main main' 'nav main main main main main';
+    grid-gap: 30px;
+    padding: 10px;
+}
+
 .heading1 {
     text-align: center;
     margin: 0;
@@ -18,10 +37,9 @@ body {
     background-color: lightgray;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
-    width: 26%;
+    width: 100%;
     padding-top: 20px;
     padding-bottom: 30px;
-    display: inline-block;
 }
 
 .form {
