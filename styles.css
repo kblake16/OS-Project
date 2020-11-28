@@ -1,7 +1,13 @@
 body {
     margin: 0;
     font-size: 16px;
+    /*background-image: url(images/paperimage.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;*/
 }
+
+
+/* Grid layout */
 
 #head {
     grid-area: head;
@@ -25,11 +31,12 @@ body {
 .heading1 {
     text-align: center;
     margin: 0;
-    font-family: "Times New Roman", Times, serif;
+    font-style: oblique;
+    font-size: 20px;
 }
 
 .heading1:hover {
-    color: rgb(110, 110, 230);
+    color: #48BB78;
     font-style: oblique;
 }
 
@@ -59,4 +66,61 @@ button {
 button:hover {
     background-color: lightslategray;
     color: black;
+}
+
+table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th:hover {
+    color: #48BB78;
+    font-style: oblique;
+}
+
+th,
+td {
+    border: 3px solid lightslategray;
+    padding: 8px;
+}
+
+#VirtualMemoryTable tr:nth-child(even) {
+    background-color: #d4d4d4;
+}
+
+#VirtualMemoryTable tr:nth-child(odd) {
+    background-color: #fdfdfd;
+}
+
+#TLBTable tr:nth-child(even) {
+    background-color: #d4d4d4;
+}
+
+#TLBTable tr:nth-child(odd) {
+    background-color: #fdfdfd;
+}
+
+#AddressTable tr:nth-child(even) {
+    background-color: #d4d4d4;
+}
+
+#AddressTable tr:nth-child(odd) {
+    background-color: #fdfdfd;
+}
+
+#PhysicalMemoryTable tr:nth-child(even) {
+    background-color: #d4d4d4;
+}
+
+#PhysicalMemoryTable tr:nth-child(odd) {
+    background-color: #fdfdfd;
+}
+
+#PageTable tr:nth-child(even) {
+    background-color: #d4d4d4;
+}
+
+#PageTable tr:nth-child(odd) {
+    background-color: #fdfdfd;
 }
