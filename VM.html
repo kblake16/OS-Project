@@ -26,22 +26,24 @@
                     <div>
                         <label>Physical Memory Size:</label> <br>
                         <input id="pps" type="input" name="physical page size" placeholder="Enter page size" required />
-
                     </div>
 
                     <br>
+
                     <div>
                         <label>Offset Bits:</label><br>
                         <input id="ofb" type="input" name="offset bits" placeholder="Enter offset bits" required/>
                     </div>
 
                     <br>
+
                     <div>
                         <label>Virtual Memory Size:</label><br>
                         <input id="vms" type="input" name="virtual memory size" placeholder="Enter VM size" required/>
                     </div>
 
                     <br>
+
                     <div>
                         <label>TLB:</label><br>
                         <input id="tlb" type="input" name="tlb entries" placeholder="Enter TLB entries" required />
@@ -49,6 +51,7 @@
 
                     <br>
                     <br>
+
                     <div>
                         <button id="reset">Reset</button>
                         <button id="submit">Submit</button>
@@ -62,46 +65,78 @@
                             <label>Load Instruction (in Hex):</label><br>
                             <input id="Instruction" type="input" name="instriction" placeholder="Enter an Instruction in hex" />
                         </div>
+                        <br>
                         <div>
                             <button id="submitIn">Submit</button>
                         </div>
                     </div>
                 </section>
+            </div>
         </section>
-        </div>
+    </div>
 
         <div id="main">
             <section>
                 <div id="result">
                     <!-- Tables will appear here -->
+                    <h1>Bit Fragmentation</h1>
                     <table id="VirtualMemoryTable">
                         <tr>
                             <th>PAGE</th>
                             <th>OFFSET</th>
                         </tr>
                     </table>
+                <br>
+
+                <div class = "set">
+                    <div class = "floatL">
+                        <h1>Instruction Breakdown</h1>
+                    <table id="InstructionTable">
+                        <tr>
+                            <th>INSTRUCTION(in hex)</th>
+                            <th>PAGE</th>
+                            <th>OFFSET</th>
+                            <th>HIT/MISS</th>
+                        </tr>
+                    </table>
                     <br>
+                    </div>
+                    <div class = "floatR">
+                        <h1>Transalation lookaside Buffer</h1>
                     <table id="TLBTable">
                         <tr>
+                            <th>INDEX</th>
                             <th>VIRTUAL PAGE #</th>
                             <th>PHYSICAL PAGE #</th>
                         </tr>
                     </table>
                     <br>
+                    </div>
+                    <br>
+                </div>
+
+                <br>
                     <table id="AddressTable">
                         <tr>
                             <th>FRAME</th>
                             <th>OFFSET</th>
                         </tr>
                     </table>
-                    <br>
+                
+                <br>
+
+                <div class = set>
+                    <div class = "floatL">
+                        <h1>Physical Memory</h1>
                     <table id="PhysicalMemoryTable">
                         <tr>
                             <th>PHYSICAL PAGE #</th>
                             <th>CONTENT</th>
                         </tr>
                     </table>
-                    <br>
+                    </div>
+                    <div class = "floatR">
+                        <h1>Page Cache</h1>
                     <table id="PageTable">
                         <tr>
                             <th>INDEX</th>
@@ -109,6 +144,9 @@
                             <th>PHYSICAL PAGE #</th>
                         </tr>
                     </table>
+                    </div>
+                </div>
+
                 </div>
 
             </section>
