@@ -1,16 +1,17 @@
 "use strict";
 
 window.onload = function() {
+    // Get form input by ID
     let PhysicalSize = document.getElementById("pps");
     let Offset = document.getElementById("ofb");
     let VM = document.getElementById("vms");
     let TLB = document.getElementById("tlb");
     let Instruction = document.getElementById("Instruction");
-
+    //Get button by ID
     let reset = document.getElementById("reset");
     let submit = document.getElementById("submit");
     let instruct = document.getElementById("submitIn");
-
+    //Get Table by ID
     var VMtable = document.getElementById("VirtualMemoryTable");
     var TLBtable = document.getElementById("TLBTable");
     var Pagetable = document.getElementById("PageTable");
@@ -19,15 +20,15 @@ window.onload = function() {
 
     submit.onclick = function createTable() {
         console.log("clicked");
-
+        //Calculates
         var div = 2 ** parseInt(Offset.value);
+        //Convert the values from the form to Int
         var tlbVal = parseInt(TLB.value);
         var offsetVal = parseInt(Offset.value);
         var vmVal = parseInt(VM.value);
         var physVal = parseInt(PhysicalSize.value);
 
         // Display and calculate Offset and Page bits
-
         var InstructionLength = Math.log2(vmVal);
         var row = VMtable.insertRow(1);
         var cell1 = row.insertCell(0);
