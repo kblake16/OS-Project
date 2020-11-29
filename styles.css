@@ -1,9 +1,9 @@
 body {
     margin: 0;
     font-size: 16px;
-    /*background-image: url(images/paperimage.jpg);
+    background-image: url(images/paperimage.jpg);
     background-repeat: no-repeat;
-    background-size: cover;*/
+    background-size: cover;
 }
 
 
@@ -22,16 +22,18 @@ body {
     grid-area: main;
     width: 1000px;
 }
-.set .floatL{
+
+.set .floatL {
     float: left;
 }
-.set .floatR{
+
+.set .floatR {
     float: right;
 }
-.phys{
+
+.phys {
     float: center;
 }
-
 
 .grid-container {
     display: grid;
@@ -104,6 +106,7 @@ td {
 #VirtualMemoryTable tr:nth-child(odd) {
     background-color: #fdfdfd;
 }
+
 #InstructionTable tr:nth-child(even) {
     background-color: #d4d4d4;
 }
