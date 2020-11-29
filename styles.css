@@ -15,15 +15,27 @@ body {
 
 #nav {
     grid-area: nav;
+    width: 250px;
 }
 
 #main {
     grid-area: main;
+    width: 1000px;
 }
+.set .floatL{
+    float: left;
+}
+.set .floatR{
+    float: right;
+}
+.phys{
+    float: center;
+}
+
 
 .grid-container {
     display: grid;
-    grid-template-areas: 'head head head head head head' 'nav main main main main main' 'nav main main main main main';
+    grid-template-areas: 'head head ' 'nav main' 'nav main ';
     grid-gap: 30px;
     padding: 10px;
 }
@@ -90,6 +102,13 @@ td {
 }
 
 #VirtualMemoryTable tr:nth-child(odd) {
+    background-color: #fdfdfd;
+}
+#InstructionTable tr:nth-child(even) {
+    background-color: #d4d4d4;
+}
+
+#InstructionTable tr:nth-child(odd) {
     background-color: #fdfdfd;
 }
 
