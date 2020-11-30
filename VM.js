@@ -29,7 +29,7 @@ window.onload = function() {
     var prevPageColor = "";
     var prevPhys = 0;
     var prevPhysColor = "";
-    var check  = /[0-9A-Fa-f]{6}/g;
+    var check  =  /^[0-9A-Fa-f]+$/;
 
     instruct.disabled = true;
 
@@ -38,6 +38,10 @@ window.onload = function() {
         if (PhysicalSize.value == "" || Offset.value == "" ||  VM.value == "" || TLB.value == "")
         {
             alert("Please Enter all fields");
+        }
+        else if ( powerOfTwo(PhysicalSize.value) == false ||  powerOfTwo(VM.value) == false) 
+        {
+            alert("Please Enter a number that is a power of 2");
         }
         else
         {
@@ -147,16 +151,8 @@ window.onload = function() {
 
     instruct.onclick = function updateTable() {
 
-        Pagetable.rows[prevPage].style.backgroundColor = prevPageColor;
-        //PhysicalMemorytable.rows[prevPhys].style.backgroundColor = prevPhysColor;
-        TLBtable.rows[prevTLB].style.backgroundColor = prevTLBColor;
-
         var valBi = hexToBi(Instruction.value);
         var pageVal = bits(valBi, Offset.value);
-
-
-        console.log(parseInt(pageVal,2));
-        console.log(Pagetable.rows.length - 2);
 
         if(Instruction.value == "")
         {
@@ -172,6 +168,10 @@ window.onload = function() {
         }
         else
         {
+            Pagetable.rows[prevPage].style.backgroundColor = prevPageColor;
+            //PhysicalMemorytable.rows[prevPhys].style.backgroundColor = prevPhysColor;
+            TLBtable.rows[prevTLB].style.backgroundColor = prevTLBColor;
+
             var offsetVal = setBits(valBi, Offset.value);
 
             textArea.innerHTML = "Page Replacement Strategy";
@@ -294,6 +294,17 @@ window.onload = function() {
                 break;
             }
         }
+    }
+
+
+    function powerOfTwo(num)
+    {
+        var power = false;
+        if (num && (num & (num - 1)) === 0)
+        {
+            power =true;
+        }
+        return power
     }
 
     function toHex(num) {
