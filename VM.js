@@ -64,6 +64,9 @@ window.onload = function() {
             var row = VMtable.insertRow(1);
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
+            var next = VMtable.insertRow(2);
+            next.insertCell(0);
+            next.insertCell(1);
             cell1.innerHTML = InstructionLength - offsetVal + " bits";
             cell2.innerHTML = offsetVal + " bits";
 
@@ -152,7 +155,7 @@ window.onload = function() {
     instruct.onclick = function updateTable() {
 
         var valBi = hexToBi(Instruction.value);
-        var pageVal = bits(valBi, Offset.value);
+        var pageVal = pageBits(valBi, Offset.value);
 
         if(Instruction.value == "")
         {
@@ -169,12 +172,12 @@ window.onload = function() {
         else
         {
             Pagetable.rows[prevPage].style.backgroundColor = prevPageColor;
-            //PhysicalMemorytable.rows[prevPhys].style.backgroundColor = prevPhysColor;
+            PhysicalMemorytable.rows[prevPhys].style.backgroundColor = prevPhysColor;
             TLBtable.rows[prevTLB].style.backgroundColor = prevTLBColor;
 
-            var offsetVal = setBits(valBi, Offset.value);
+            var offsetVal = offsetBits(valBi, Offset.value);
 
-            textArea.innerHTML = "Page Replacement Strategy";
+            textArea.innerHTML = "FIFO Strategy \n";
 
             console.log("Input: " + Instruction.value);
             console.log("Bi: " + pageVal);
@@ -204,7 +207,11 @@ window.onload = function() {
                 prevTLBColor = window.getComputedStyle(TLBTable.rows[i]).backgroundColor;
                 AddressTable.rows[1].cells[0].innerHTML = TLBtable.rows[i].cells[2].innerHTML;
                 AddressTable.rows[1].cells[1].innerHTML = o;
-                TLBtable.rows[i].style.backgroundColor = "green";
+                AddressTable.rows[1].style.backgroundColor = "green";
+                VMtable.rows[2].cells[0].innerHTML = TLBtable.rows[i].cells[1].innerHTML;
+                VMtable.rows[2].cells[1].innerHTML = o;
+                VMtable.rows[2].style.backgroundColor = "green";
+                TLBtable.rows[i].style.backgroundColor = "yellow";
                 prevTLB= i;
                 r.innerHTML = "TLB HIT";
                 check = true;
@@ -213,11 +220,22 @@ window.onload = function() {
                 prevTLBColor = window.getComputedStyle(TLBTable.rows[i]).backgroundColor;
                 TLBtable.rows[i].cells[1].innerHTML = p;
                 var num = emptyPhys(PhysicalMemorytable);
+                prevPhysColor = window.getComputedStyle(PhysicalMemorytable.rows[num]).backgroundColor;
                 TLBtable.rows[i].cells[2].innerHTML = parseInt(PhysicalMemorytable.rows[num].cells[0].innerHTML, 16);
                 PhysicalMemorytable.rows[num].cells[1].innerHTML = p + " DATA";
                 updatePage(Pagetable, p, PhysicalMemorytable.rows[num].cells[0].innerHTML);
-                TLBtable.rows[i].style.backgroundColor = "green";
+                TLBtable.rows[i].style.backgroundColor = "yellow";
+                PhysicalMemorytable.rows[num].style.backgroundColor = "yellow";
+                prevPhys = num;
                 prevTLB = i;
+
+                AddressTable.rows[1].cells[0].innerHTML = TLBtable.rows[i].cells[2].innerHTML;
+                AddressTable.rows[1].cells[1].innerHTML = o;
+                AddressTable.rows[1].style.backgroundColor = "red";
+                VMtable.rows[2].cells[0].innerHTML = TLBtable.rows[i].cells[1].innerHTML;
+                VMtable.rows[2].cells[1].innerHTML = o;
+                VMtable.rows[2].style.backgroundColor = "red";
+
                 r.innerHTML = "MISS";
                 check = true;
                 console.log("TLB miss");
@@ -251,8 +269,17 @@ window.onload = function() {
             if (Pagetable.rows[i].cells[0].innerHTML == biToHex(p) && Pagetable.rows[i].cells[1].innerHTML == 1) {
                 prevTLBColor = window.getComputedStyle(TLBTable.rows[currentRow]).backgroundColor;
                 prevPageColor = window.getComputedStyle(Pagetable.rows[i]).backgroundColor;
+                var num = parseInt(Pagetable.rows[i].cells[2].innerHTML) + 1;
+                prevPhysColor = window.getComputedStyle(PhysicalMemorytable.rows[num]).backgroundColor;
+                PhysicalMemorytable.rows[num].style.backgroundColor = "yellow";
+                prevPhys = num;
+
                 AddressTable.rows[1].cells[0].innerHTML = Pagetable.rows[i].cells[2].innerHTML;
                 AddressTable.rows[1].cells[1].innerHTML = o;
+                AddressTable.rows[1].style.backgroundColor = "green";
+                VMtable.rows[2].cells[0].innerHTML = p;
+                VMtable.rows[2].cells[1].innerHTML = o;
+                VMtable.rows[2].style.backgroundColor = "green";
 
                 //text area display
                 textArea.innerHTML += "\n Index: " + TLBtable.rows[currentRow].cells[0].innerHTML
@@ -263,9 +290,9 @@ window.onload = function() {
 
                 TLBtable.rows[currentRow].cells[1].innerHTML = p;
                 TLBtable.rows[currentRow].cells[2].innerHTML = Pagetable.rows[i].cells[2].innerHTML;
-                TLBtable.rows[currentRow].style.backgroundColor = "green";
+                TLBtable.rows[currentRow].style.backgroundColor = "yellow";
                 prevTLB= currentRow;
-                Pagetable.rows[i].style.backgroundColor = "green";
+                Pagetable.rows[i].style.backgroundColor = "yellow";
                 prevPage = i;
                 r.innerHTML = "PAGE HIT";
                 updateRow()
@@ -281,13 +308,24 @@ window.onload = function() {
 
                 TLBtable.rows[currentRow].cells[1].innerHTML = p;
                 var num = emptyPhys(PhysicalMemorytable);
+                prevPhysColor = window.getComputedStyle(PhysicalMemorytable.rows[num]).backgroundColor;
                 TLBtable.rows[currentRow].cells[2].innerHTML = parseInt(PhysicalMemorytable.rows[num].cells[0].innerHTML, 16);
 
                 textArea.innerHTML += "\n Phyiscal Page: " +  TLBtable.rows[currentRow].cells[2].innerHTML;
 
                 PhysicalMemorytable.rows[num].cells[1].innerHTML = p + " DATA";
                 updatePage(Pagetable, p, PhysicalMemorytable.rows[num].cells[0].innerHTML);
-                TLBtable.rows[currentRow].style.backgroundColor = "green";
+
+                AddressTable.rows[1].cells[0].innerHTML = Pagetable.rows[i].cells[2].innerHTML;
+                AddressTable.rows[1].cells[1].innerHTML = o;
+                AddressTable.rows[1].style.backgroundColor = "red";
+                VMtable.rows[2].cells[0].innerHTML = p;
+                VMtable.rows[2].cells[1].innerHTML = o;
+                VMtable.rows[2].style.backgroundColor = "red";
+
+                PhysicalMemorytable.rows[num].style.backgroundColor = "yellow";
+                prevPhys = num;
+                TLBtable.rows[currentRow].style.backgroundColor = "yellow";
                 prevTLB= currentRow;
                 updateRow();
                 r.innerHTML = "MISS";
@@ -323,7 +361,7 @@ window.onload = function() {
         return parseInt(num, 2).toString(16);
     }
 
-    function bits(num, set) {
+    function pageBits(num, set) {
         var val = Math.log2(VM.value) - Offset.value
         var l = num.toString().length
         var n = num.toString().substr(0, l - set);
@@ -338,7 +376,7 @@ window.onload = function() {
         return n;
     }
 
-    function setBits(num, set) {
+    function offsetBits(num, set) {
         var n = num.toString().substr(-set);
         return n;
     }
@@ -361,7 +399,7 @@ window.onload = function() {
                 prevPageColor = window.getComputedStyle(table.rows[i]).backgroundColor;
                 table.rows[i].cells[1].innerHTML = 1;
                 table.rows[i].cells[2].innerHTML = parseInt(index, 16);
-                table.rows[i].style.backgroundColor = "green";
+                table.rows[i].style.backgroundColor = "yellow";
                 prevPage = i;
                 break;
             }

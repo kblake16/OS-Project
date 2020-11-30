@@ -14,7 +14,7 @@
 
 <body class="grid-container">
         <header id="head" class="heading1">
-            <h1>Virtual Memory</h1>
+            <h1>Virtual Memory Simulation</h1>
         </header>
 
     <div id="nav">
@@ -23,7 +23,7 @@
                 <form id="controls">
                     <div>
                         <label>Physical Memory Size:</label> <br>
-                        <input id="pps" type="input" name="physical page size" placeholder="Enter page size" required />
+                        <input id="pps" type="input" name="physical page size" placeholder="Enter value in bytes (^2)" required />
                     </div>
 
                     <br>
@@ -37,7 +37,7 @@
 
                     <div>
                         <label>Virtual Memory Size:</label><br>
-                        <input id="vms" type="input" name="virtual memory size" placeholder="Enter VM size" required/>
+                        <input id="vms" type="input" name="virtual memory size" placeholder="Enter value in bytes (^2)" required/>
                     </div>
 
                     <br>
@@ -72,7 +72,7 @@
                 <br>
                 <section id="controls">
                     <textarea readonly id="area">
-                        Page Replacement Strategy
+                        FIFO Strategy
                     </textarea>
                 </section>
             </div>
@@ -83,74 +83,73 @@
             <section>
                 <div id="result">
                     <!-- Tables will appear here -->
-                    <h1>Bit Fragmentation</h1>
+                    <h1>Logical Address</h1>
                     <table id="VirtualMemoryTable" class="color">
                         <tr>
                             <th>PAGE</th>
                             <th>OFFSET</th>
                         </tr>
                     </table>
-                <br>
+                    <br>
 
-                <div class = "set">
-                    <div class = "floatL">
-                        <h1>Instruction Breakdown</h1>
-                    <table id="InstructionTable" class="color">
-                        <tr>
-                            <th>INSTRUCTION(in hex)</th>
-                            <th>PAGE</th>
-                            <th>OFFSET</th>
-                            <th>HIT/MISS</th>
-                        </tr>
-                    </table>
-                    <br>
+                    <div class = "set">
+                        <div class = "floatL">
+                            <h1>Instruction Breakdown</h1>
+                            <table id="InstructionTable" class="color">
+                            <tr>
+                                <th>INSTRUCTION(in hex)</th>
+                                <th>PAGE</th>
+                                <th>OFFSET</th>
+                                <th>HIT/MISS</th>
+                            </tr>
+                            </table>
+                        </div>
+                        <div class = "floatR">
+                            <h1>Transalation lookaside Buffer</h1>
+                            <table id="TLBTable" class="color">
+                            <tr>
+                                <th>INDEX</th>
+                                <th>VIRTUAL PAGE #</th>
+                                <th>PHYSICAL PAGE #</th>
+                            </tr>
+                            </table>
+                        </div>
                     </div>
-                    <div class = "floatR">
-                        <h1>Transalation lookaside Buffer</h1>
-                    <table id="TLBTable" class="color">
-                        <tr>
-                            <th>INDEX</th>
-                            <th>VIRTUAL PAGE #</th>
-                            <th>PHYSICAL PAGE #</th>
-                        </tr>
-                    </table>
-                    <br>
-                    </div>
-                    <br>
-                </div>
 
-                <br>
-                    <table id="AddressTable" class="color">
-                        <tr>
-                            <th>FRAME</th>
-                            <th>OFFSET</th>
-                        </tr>
-                    </table>
+                    <br>
+                    <div class="title">
+                        <h1>Physical Address</h1>
+                        <table id="AddressTable" class="color">
+                            <tr>
+                                <th>FRAME</th>
+                                <th>OFFSET</th>
+                            </tr>
+                        </table>
+                    </div>
                 
-                <br>
+                    <br>
 
-                <div class = set>
-                    <div class = "floatL">
-                        <h1>Physical Memory</h1>
-                    <table id="PhysicalMemoryTable" class="color">
-                        <tr>
-                            <th>PHYSICAL PAGE # [FRAME]</th>
-                            <th>CONTENT</th>
-                        </tr>
-                    </table>
+                    <div class = set>
+                        <div class = "floatL">
+                            <h1>Physical Memory</h1>
+                            <table id="PhysicalMemoryTable" class="color">
+                            <tr>
+                                <th>PHYSICAL PAGE # [FRAME]</th>
+                                <th>CONTENT</th>
+                            </tr>
+                            </table>
+                        </div>
+                        <div class = "floatR">
+                            <h1>Page Table</h1>
+                            <table id="PageTable" class="color">
+                            <tr>
+                                <th>PAGE #</th>
+                                <th>VALID</th>
+                                <th>PHYSICAL PAGE #</th>
+                            </tr>
+                            </table>
+                        </div>
                     </div>
-                    <div class = "floatR">
-                        <h1>Page Table</h1>
-                    <table id="PageTable" class="color">
-                        <tr>
-                            <th>PAGE #</th>
-                            <th>VALID</th>
-                            <th>PHYSICAL PAGE #</th>
-                        </tr>
-                    </table>
-                    </div>
-                </div>
-
                 </div>
 
             </section>

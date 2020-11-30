@@ -28,14 +28,15 @@ body {
     padding: 20px;
 }
 
-.set .floatL {
-    float: left;
+.set{
+    display: grid;
+    grid-template-areas: 'title title' 'table table';
+    grid-gap: 30px;
 }
 
-.set .floatR {
-    float: right;
+.title{
+    justify-content: center;
 }
-
 .phys {
     float: center;
 }
@@ -119,51 +120,3 @@ td {
 .color tr:nth-child(odd) {
     background-color: #fdfdfd;
 }
-
-/*#VirtualMemoryTable tr:nth-child(even) {
-    background-color: #d4d4d4;
-}
-
-#VirtualMemoryTable tr:nth-child(odd) {
-    background-color: #fdfdfd;
-}
-
-#InstructionTable tr:nth-child(even) {
-    background-color: #d4d4d4;
-}
-
-#InstructionTable tr:nth-child(odd) {
-    background-color: #fdfdfd;
-}
-
-#TLBTable tr:nth-child(even) {
-    background-color: #d4d4d4;
-}
-
-#TLBTable tr:nth-child(odd) {
-    background-color: #fdfdfd;
-}
-
-#AddressTable tr:nth-child(even) {
-    background-color: #d4d4d4;
-}
-
-#AddressTable tr:nth-child(odd) {
-    background-color: #fdfdfd;
-}
-
-#PhysicalMemoryTable tr:nth-child(even) {
-    background-color: #d4d4d4;
-}
-
-#PhysicalMemoryTable tr:nth-child(odd) {
-    background-color: #fdfdfd;
-}
-
-#PageTable tr:nth-child(even) {
-    background-color: #d4d4d4;
-}
-
-#PageTable tr:nth-child(odd) {
-    background-color: #fdfdfd;
-}*/
