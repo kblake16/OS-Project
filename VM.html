@@ -13,11 +13,9 @@
 </head>
 
 <body class="grid-container">
-    <div id="head">
-        <section class="heading1">
+        <header id="head" class="heading1">
             <h1>Virtual Memory</h1>
-        </section>
-    </div>
+        </header>
 
     <div id="nav">
         <section>
@@ -71,6 +69,12 @@
                         </div>
                     </div>
                 </section>
+                <br>
+                <section id="controls">
+                    <textarea readonly id="area">
+                        Page Replacement Strategy
+                    </textarea>
+                </section>
             </div>
         </section>
     </div>
@@ -80,7 +84,7 @@
                 <div id="result">
                     <!-- Tables will appear here -->
                     <h1>Bit Fragmentation</h1>
-                    <table id="VirtualMemoryTable">
+                    <table id="VirtualMemoryTable" class="color">
                         <tr>
                             <th>PAGE</th>
                             <th>OFFSET</th>
@@ -91,7 +95,7 @@
                 <div class = "set">
                     <div class = "floatL">
                         <h1>Instruction Breakdown</h1>
-                    <table id="InstructionTable">
+                    <table id="InstructionTable" class="color">
                         <tr>
                             <th>INSTRUCTION(in hex)</th>
                             <th>PAGE</th>
@@ -103,7 +107,7 @@
                     </div>
                     <div class = "floatR">
                         <h1>Transalation lookaside Buffer</h1>
-                    <table id="TLBTable">
+                    <table id="TLBTable" class="color">
                         <tr>
                             <th>INDEX</th>
                             <th>VIRTUAL PAGE #</th>
@@ -116,7 +120,7 @@
                 </div>
 
                 <br>
-                    <table id="AddressTable">
+                    <table id="AddressTable" class="color">
                         <tr>
                             <th>FRAME</th>
                             <th>OFFSET</th>
@@ -128,18 +132,18 @@
                 <div class = set>
                     <div class = "floatL">
                         <h1>Physical Memory</h1>
-                    <table id="PhysicalMemoryTable">
+                    <table id="PhysicalMemoryTable" class="color">
                         <tr>
-                            <th>PHYSICAL PAGE #</th>
+                            <th>PHYSICAL PAGE # [FRAME]</th>
                             <th>CONTENT</th>
                         </tr>
                     </table>
                     </div>
                     <div class = "floatR">
-                        <h1>Page Cache</h1>
-                    <table id="PageTable">
+                        <h1>Page Table</h1>
+                    <table id="PageTable" class="color">
                         <tr>
-                            <th>INDEX</th>
+                            <th>PAGE #</th>
                             <th>VALID</th>
                             <th>PHYSICAL PAGE #</th>
                         </tr>
