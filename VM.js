@@ -29,6 +29,7 @@ window.onload = function() {
     var prevPageColor = "";
     var prevPhys = 0;
     var prevPhysColor = "";
+    var check  = /[0-9A-Fa-f]{6}/g;
 
     instruct.disabled = true;
 
@@ -138,6 +139,7 @@ window.onload = function() {
         for (var i = rowCount; i > 0; i--) {
             Instruction.deleteRow(i);
         }
+
         submit.disabled = false;
         instruct.disabled = true;
         event.preventDefault();
@@ -159,6 +161,10 @@ window.onload = function() {
         if(Instruction.value == "")
         {
             alert("Please Enter an Instruction");
+        }
+        else if (!(check.test(Instruction.value)))
+        {
+            alert("Please Enter a valid hex");
         }
         else if ( parseInt(pageVal,2) > Pagetable.rows.length - 2 )
         {
@@ -244,21 +250,41 @@ window.onload = function() {
         for (var i = 1; i <= pageRow; i++) {
             if (Pagetable.rows[i].cells[0].innerHTML == biToHex(p) && Pagetable.rows[i].cells[1].innerHTML == 1) {
                 prevTLBColor = window.getComputedStyle(TLBTable.rows[currentRow]).backgroundColor;
-                console.log("Found in page table");
+                prevPageColor = window.getComputedStyle(Pagetable.rows[i]).backgroundColor;
                 AddressTable.rows[1].cells[0].innerHTML = Pagetable.rows[i].cells[2].innerHTML;
                 AddressTable.rows[1].cells[1].innerHTML = o;
+
+                //text area display
+                textArea.innerHTML += "\n Index: " + TLBtable.rows[currentRow].cells[0].innerHTML
+                +"\n \n Old Entry \n Virtual Page: " + TLBtable.rows[currentRow].cells[1].innerHTML 
+                + "\n Phyical Page " + TLBtable.rows[currentRow].cells[2].innerHTML
+                + "\n \n  New Entry \n Virtual Page: " + p
+                + "\n Phyiscal Page: " +  Pagetable.rows[i].cells[2].innerHTML;
+
                 TLBtable.rows[currentRow].cells[1].innerHTML = p;
                 TLBtable.rows[currentRow].cells[2].innerHTML = Pagetable.rows[i].cells[2].innerHTML;
                 TLBtable.rows[currentRow].style.backgroundColor = "green";
                 prevTLB= currentRow;
+                Pagetable.rows[i].style.backgroundColor = "green";
+                prevPage = i;
                 r.innerHTML = "PAGE HIT";
                 updateRow()
                 break;
             } else if (Pagetable.rows[i].cells[0].innerHTML == biToHex(p) && Pagetable.rows[i].cells[1].innerHTML == 0) {
                 prevTLBColor = window.getComputedStyle(TLBTable.rows[currentRow]).backgroundColor;
+
+                //text area display
+                textArea.innerHTML += "\n Index: " + TLBtable.rows[currentRow].cells[0].innerHTML
+                +"\n \n Old Entry \n Virtual Page: " + TLBtable.rows[currentRow].cells[1].innerHTML 
+                + "\n Phyical Page " + TLBtable.rows[currentRow].cells[2].innerHTML
+                + "\n \n  New Entry \n Virtual Page: " + p;
+
                 TLBtable.rows[currentRow].cells[1].innerHTML = p;
                 var num = emptyPhys(PhysicalMemorytable);
                 TLBtable.rows[currentRow].cells[2].innerHTML = parseInt(PhysicalMemorytable.rows[num].cells[0].innerHTML, 16);
+
+                textArea.innerHTML += "\n Phyiscal Page: " +  TLBtable.rows[currentRow].cells[2].innerHTML;
+
                 PhysicalMemorytable.rows[num].cells[1].innerHTML = p + " DATA";
                 updatePage(Pagetable, p, PhysicalMemorytable.rows[num].cells[0].innerHTML);
                 TLBtable.rows[currentRow].style.backgroundColor = "green";
