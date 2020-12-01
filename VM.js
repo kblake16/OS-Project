@@ -214,6 +214,7 @@ window.onload = function() {
                 TLBtable.rows[i].style.backgroundColor = "yellow";
                 prevTLB= i;
                 r.innerHTML = "TLB HIT";
+                r.style.color = "green";
                 check = true;
                 break;
             } else if (TLBtable.rows[i].cells[1].innerHTML == "") {
@@ -237,6 +238,7 @@ window.onload = function() {
                 VMtable.rows[2].style.backgroundColor = "red";
 
                 r.innerHTML = "MISS";
+                r.style.color = "red";
                 check = true;
                 console.log("TLB miss");
                 updateRow();
@@ -295,6 +297,7 @@ window.onload = function() {
                 Pagetable.rows[i].style.backgroundColor = "yellow";
                 prevPage = i;
                 r.innerHTML = "PAGE HIT";
+                r.style.color = "green";
                 updateRow()
                 break;
             } else if (Pagetable.rows[i].cells[0].innerHTML == biToHex(p) && Pagetable.rows[i].cells[1].innerHTML == 0) {
@@ -329,6 +332,7 @@ window.onload = function() {
                 prevTLB= currentRow;
                 updateRow();
                 r.innerHTML = "MISS";
+                r.style.color = "red";
                 break;
             }
         }
