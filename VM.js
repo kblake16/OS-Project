@@ -43,6 +43,10 @@ window.onload = function() {
         {
             alert("Please Enter a number that is a power of 2");
         }
+        else if (parseInt(Offset.value) >= Math.log2(parseInt(VM.value)))
+        {
+            alert("Offset is greater than or equal to the allocated bits for the Logical Address");
+        }
         else
         {
             //Calculates
